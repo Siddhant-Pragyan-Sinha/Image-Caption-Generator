@@ -1,0 +1,28 @@
+# Model files
+models2/
+*.h5
+*.keras
+
+# Feature files
+features.p
+tokenizer.p
+
+# IDE settings (add this section)
+.vscode/
+*.code-workspace
+.idea/
+*.swp
+*.swo
+*~
+
+# Dataset
+Flickr8k_Dataset/
+Flickr8k_text/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Python packages
+.venv/
