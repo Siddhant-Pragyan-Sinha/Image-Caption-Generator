@@ -6,6 +6,7 @@ models2/
 # Feature files
 features.p
 tokenizer.p
+descriptions.txt
 
 # IDE settings (add this section)
 .vscode/
