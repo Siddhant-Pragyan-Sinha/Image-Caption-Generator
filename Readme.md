@@ -1,78 +1,141 @@
-# Image-Caption-Generator
+# 🖼️ Image Caption Generator
 
-Simple image captioning project using PyTorch. This repo includes dataset preprocessing, an encoder-decoder model, training/evaluation scripts, and example inference.
+<div align="center">
 
-## Quick start
-1. Create venv:
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)](https://www.tensorflow.org/)
+[![Keras](https://img.shields.io/badge/Keras-Deep%20Learning-red)](https://keras.io/)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Siddhant-Pragyan-Sinha/Image-Caption-Generator)
+
+*A deep learning model that generates descriptive captions for images using CNN-RNN architecture*
+
+[Demo](#demo) • [Features](#features) • [Architecture](#architecture) • [Installation](#installation) • [Usage](#usage) • [Results](#results)
+
+</div>
+
+## 📋 Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Model Architecture](#architecture)
+- [Installation](#installation)
+- [Dataset Preparation](#dataset-preparation)
+- [Training](#training)
+- [Inference](#inference)
+- [Results](#results)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+
+## 🎯 Overview
+
+This project implements an **Image Caption Generator** using a deep learning approach that combines **Computer Vision** and **Natural Language Processing**. The model uses a CNN encoder (InceptionV3) to extract image features and an LSTM decoder with attention mechanism to generate descriptive captions.
+
+The generator can understand context, objects, and relationships within images to produce human-like descriptions, making it useful for accessibility tools, content management systems, and AI-assisted image tagging.
+
+## ✨ Features
+
+- **Dual-Modality Architecture**: Combines CNN for visual feature extraction with RNN for language generation
+- **Attention Mechanism**: Implements Bahdanau attention for better caption alignment
+- **Pre-trained Models**: Supports InceptionV3 as feature extractors
+- **Beam Search**: Implements beam search algorithm for improved caption generation
+- **BLEU Score Evaluation**: Quantitative evaluation of generated captions
+- **Web Interface**: Optional Flask-based web application for easy interaction (comingup in future update)
+- **Batch Processing**: Efficient handling of large datasets
+- **Model Checkpointing**: Automatic saving of best models during training
+
+## 🏗️ Architecture
+![model-architecture](/model.png)
+
+
+### Components
+1. **Encoder**: Pre-trained CNN (InceptionV3) for image feature extraction
+2. **Decoder**: LSTM with embedding layer and attention mechanism
+3. **Attention**: Bahdanau attention to focus on relevant image regions
+4. **Text Processing**: Tokenization, padding, and sequence generation
+
+### Technical Specifications
+- **Embedding Dimension**: 256
+- **LSTM Units**: 512
+- **Dropout Rate**: 0.3
+- **Attention Units**: 512
+- **Vocabulary Size**: 7500+ words
+- **Max Caption Length**: 34 tokens
+
+## 🚀 Installation
+
+### Prerequisites
+- Python 3.8+
+- TensorFlow 2.x
+- 8GB+ RAM (16GB recommended)
+- GPU support (optional but recommended for training)
+
+### Step-by-Step Setup
+
+1. **Clone the repository**
    ```bash
-   python -m venv .venv
-   source .venv/bin/activate
+   git clone https://github.com/Siddhant-Pragyan-Sinha/Image-Caption-Generator.git
+   cd Image-Caption-Generator
+   ```
+2. **Create virtual environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+3. **Install dependencies**
+   ```bash
    pip install -r requirements.txt
    ```
-![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
-![Tensorflow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=TensorFlow&logoColor=white)
-![Keras](https://img.shields.io/badge/Keras-FF0000?style=for-the-badge&logo=keras&logoColor=white)
-![NumPy](https://img.shields.io/badge/Numpy-777BB4?style=for-the-badge&logo=numpy&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-2C2D72?style=for-the-badge&logo=pandas&logoColor=white)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
+# 📊 Dataset Preparation
 
-## 📝 Description
+### Using Flickr8k Dataset
+1. Download the ![Flickr8k dataset](https://drive.google.com/file/d/1u3oqx36XApnAykFDB6EEWUIfd_CxRQQ9/view) and ![Flicker8k text](https://drive.google.com/file/d/1qcRy3WpQv4dGtu65gETtYLWxDPBrRtx1/view)
 
-Unleash the power of AI to breathe life into your images with Image-Caption-Generator! This Python-based project leverages cutting-edge techniques to automatically generate descriptive and engaging captions for any image you throw its way. While details about specific features are currently limited, the foundation in Python promises a versatile and extensible platform for future development. Imagine effortlessly captioning your photo albums, automating social media posts, or enhancing accessibility for visually impaired users. Image-Caption-Generator is the starting point for exploring the exciting intersection of computer vision and natural language processing.
-
-
-## 📦 Key Dependencies
-
+2. Extract and Organise
 ```
-tensorflow: 2.15.0
-keras: 2.15.0
-numpy: 1.24.3
-Pillow: 10.0.0
-matplotlib: 3.7.2
-tqdm: 4.66.1
+├── Flicker8k_Dataset
+│  
+└── Flicker8k_text
+```   
+# 🏋️ Training
+## Quick Start
+```bash
+python main.py
 ```
+## TODO List
 
-## 📁 Project Structure
+    Week 1: Quick Wins
 
-```
-Image-Caption-Generator/
-├─ LICENSE
-├─ main.py
-├─ .gitignore     
-├─ README.md
-├─ requirements.txt
-├─ .gitignore
-└── test.py
-```
+    ✅ Implement beam search (2-3 hours)
+    ✅ Add temperature sampling (1 hour)
+    ✅ Test and measure improvement
+   
+    Week 2: Architecture
+   
+    ✅ Add attention mechanism (1 day)
+    ✅ Use spatial features (1 day)
+    ✅ Retrain model
+   
+    Week 3: Training
 
-## Model Structure
-![model-structure](model.png)
+    ✅ Learning rate scheduling (2 hours)
+    ✅ Early stopping (1 hour)
+    ✅ Train for more epochs (20-30 instead of 10)
+   
+    Week 4: Advanced (Optional)
+   
+    ✅ Consider Transformer decoder
+    ✅ Experiment with CLIP features
 
-## 🛠️ Development Setup
+## 📈 Expected Results with Combined Improvements
+| Metric | Current | Phase 1 | Phase 2 | Phase 3 | Phase 4 |
+|--------|---------|---------|---------|---------|---------|
+| BLEU-1 | 0.366 | 0.41 | 0.45 | 0.48 | 0.52-0.55 |
+| BLEU-4 | 0.066 | 0.10 | 0.13 | 0.15 | 0.18-0.22 |
+| METEOR | 0.241 | 0.26 | 0.28 | 0.30 | 0.32-0.35 |
+| CIDEr  | 0.118 | 0.16 | 0.21 | 0.25 | 0.35-0.45 |
 
-### Python Setup
-1. Install Python (v3.8+ recommended)
-2. Create a virtual environment: `python -m venv venv`
-3. Activate the environment:
-   - Windows: `venv\Scripts\activate`
-   - Unix/MacOS: `source venv/bin/activate`
-4. Install dependencies: `pip install -r requirements.txt`
+# 📄 License
 
-
-## 👥 Contributing
-
-Contributions are welcome! Here's how you can help:
-
-1. **Fork** the repository
-2. **Clone** your fork: `git clone https://github.com/Siddhant-Pragyan-Sinha/Image-Caption-Generator.git`
-3. **Create** a new branch: `git checkout -b feature/your-feature`
-4. **Commit** your changes: `git commit -am 'Add some feature'`
-5. **Push** to your branch: `git push origin feature/your-feature`
-6. **Open** a pull request
-
-Please ensure your code follows the project's style guidelines and includes tests where applicable.
-
-## License
-[MIT](/License)
-
----
+This project is licensed under the MIT License - see the ![LICENSE](/License) file for details.
